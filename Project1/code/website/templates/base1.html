@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticker</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,900;1,400&family=Ubuntu:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+
+    <!-- bootstrap cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+    <!-- vue cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/showtime-favicon.png">
+
+    <!-- font awesome  -->
+    <script src="https://kit.fontawesome.com/bc8fed6840.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Preload critical background image to prevent white flash on login -->
+    <link rel="preload" href="/static/SeatCoverTry.png" as="image">
+    
+    <!-- css sheet  -->
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/seat_cover_fixes.css">
+    <link rel="stylesheet" href="/static/responsive-fixes.css">
+    
+    <!-- Critical CSS to prevent white flash on login page -->
+    <style>
+        /* Immediate dark background for login pages - loaded before Vue.js */
+        .container-login {
+            background-color: #1a1a1a !important;
+            background-image: url('/static/SeatCoverTry.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+        
+        /* Ensure body is dark immediately */
+        body {
+            background-color: #1a1a1a;
+        }
+        
+        /* Prevent any white flash during component loading */
+        #app {
+            background-color: #1a1a1a;
+            min-height: 100vh;
+        }
+    </style>
+
+</head>
+<body class="bg">
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <script type="module" src="/static/appjs/app.js"></script>
+    
+    <!-- Admin Background Fix Script -->
+    <script src="/static/admin-background-fix.js"></script>
+    
+
+</body>
+</html>

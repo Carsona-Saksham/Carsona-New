@@ -1,0 +1,586 @@
+/* My Orders Page Specific Styles - Scoped and Responsive */
+
+.orders-container h1 {
+    margin-top: -7rem; /* Further reduced top margin */
+    margin-bottom: 4rem;
+}
+
+/* Pagination Info Styles */
+.pagination-info {
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    border-left: 4px solid #007bff;
+}
+
+.pagination-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+/* Pagination Container */
+.pagination-container {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #ffffff;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}
+
+/* Pagination Buttons */
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    background-color: #ffffff;
+    color: #495057;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    color: #212529;
+    transform: translateY(-1px);
+}
+
+.pagination-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-btn.active {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.25);
+}
+
+.pagination-btn.active:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #ffffff;
+}
+
+.pagination-btn:disabled {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+.pagination-btn:disabled:hover {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #6c757d;
+    transform: none;
+}
+
+/* First/Last page buttons (double arrows) */
+.pagination-btn:first-child,
+.pagination-btn:last-child {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Page Info Bottom */
+.pagination-info-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 0.375rem;
+    border: 1px solid #e9ecef;
+}
+
+.pagination-info-bottom span {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Responsive Design for Pagination */
+@media (max-width: 768px) {
+    .pagination-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem;
+        padding: 0.5rem;
+    }
+    
+    .pagination-btn {
+        min-width: 2.25rem;
+        height: 2.25rem;
+        font-size: 0.85rem;
+    }
+    
+    .pagination-info p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination-controls {
+        gap: 0.125rem;
+    }
+    
+    .pagination-btn {
+        min-width: 2rem;
+        height: 2rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Hide some page numbers on very small screens */
+    .pagination-btn:nth-child(n+8):nth-child(-n+20) {
+        display: none;
+    }
+}
+
+.orders-container .order-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem; /* 12px */
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08); /* 4px 12px */
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.orders-container .order-details-grid {
+    display: grid;
+    /* Flexible grid: Image size is respected, text takes remaining space, button is separate */
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+}
+
+.orders-container .order-image-container {
+    width: 100%;
+}
+
+.orders-container .order-details-image {
+    width: clamp(10rem, 20vw, 20rem); /* Let image be large but contained */
+    height: auto;
+    border-radius: 0.5rem; /* 8px */
+    object-fit: cover;
+}
+
+.orders-container .order-details-info p {
+    margin: 0.4rem 0;
+    color: #555;
+    line-height: 1.5;
+    font-size: clamp(0.9rem, 1.5vw, 1rem); /* Readable font size */
+}
+
+.orders-container .order-details-info p strong {
+    margin-right: 0.5em; /* Space between label and value */
+    font-weight: 600;
+}
+
+.orders-container .order-main-info {
+    min-width: 0; /* CRITICAL: Prevents text from overflowing its container */
+}
+
+.orders-container .order-main-info h3 {
+    margin-top: 0; /* Ensure no top margin */
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.orders-container .order-main-info p {
+    margin: 0.5rem 0;
+    color: #555;
+    font-size: clamp(0.5rem, 2vw, 4rem); /* Responsive font size */
+}
+
+.orders-container .order-actions {
+    margin-top: 0;
+    align-self: center;
+}
+
+.orders-container .billing-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem; /* 8px */
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.orders-container .billing-button:hover {
+    background-color: #0056b3;
+}
+
+.orders-container .order-status-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 0.0625rem solid #e9ecef; /* 1px */
+    margin-bottom: -0.5rem; /* Reduce space below timeline */
+}
+
+.orders-container .current-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.orders-container .status-badge {
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.25rem; /* 20px */
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.orders-container .status-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.orders-container .status-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0.9375rem; /* 15px */
+    left: 5%;
+    right: 5%;
+    height: 0.1875rem; /* 3px */
+    background-color: #e0e0e0;
+    z-index: 1;
+}
+
+.orders-container .status-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 6.25rem; /* 100px */
+    position: relative;
+    z-index: 2;
+}
+
+.orders-container .status-circle {
+    width: 2.5rem; /* 40px - Increased size */
+    height: 2.5rem; /* 40px - Increased size */
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Increased icon size */
+    border: 0.25rem solid white; /* 4px */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.orders-container .status-step.active .status-circle {
+    background-color: #28a745; /* Green for active */
+    border-color: #d4edda;
+    animation: pulse 2s infinite;
+}
+
+.orders-container .status-step.completed .status-circle {
+    background-color: #007bff; /* Blue for completed */
+}
+
+.orders-container .status-label {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 0.625rem rgba(40, 167, 69, 0); /* 10px -> 0.625rem */
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+}
+
+/* Styling for the 'No Orders' message */
+.no-orders-message {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    border-radius: 0.75rem;
+    margin: 2rem auto 0; /* Keeps top margin, centers horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%; /* Reduced width as you requested */
+    max-width: 41rem; /* Responsive max-width using rem */
+}
+
+.no-orders-message h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+}
+
+.no-orders-message p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.no-orders-message .shop-now-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    text-decoration: none; /* For router-link styled as a button */
+}
+
+.no-orders-message .shop-now-button:hover {
+    background-color: #0056b3;
+} 
+
+/* Loading Indicator Styles (moved from inline) */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    min-height: 25rem; /* 400px -> 25rem */
+}
+.spinner {
+    border: 0.25rem solid #f3f3f3; /* 4px -> 0.25rem */
+    border-top: 0.25rem solid #0056b3; /* 4px -> 0.25rem */
+    border-radius: 50%;
+    width: 3.125rem; /* 50px -> 3.125rem */
+    height: 3.125rem; /* 50px -> 3.125rem */
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+.loading-container > p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+
+/* ===== My Orders Billing Modal: PIXEL-PERFECT REPLICA - DEFINITIVE FIX V2 ===== */
+
+/* Modal Backdrop and Positioning */
+.orders-container .modal {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(4px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1rem !important;
+}
+
+/* Main Dialog Card - Increased Width */
+.orders-container .modal-dialog_orders { /* Target the correct class name used in the HTML */
+    background: #ffffff !important;
+    border-radius: 0.75rem !important; /* 12px -> 0.75rem */
+    box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.15) !important; /* 8px 30px -> 0.5rem 1.875rem */
+    border: 0.0625rem solid #dee2e6 !important; /* 1px -> 0.0625rem */
+    max-width: 40rem !important; /* Increased from 34.375rem (550px) to 40rem (640px) */
+    width: 100% !important;
+    margin: 0 auto !important; /* Center the modal */
+    overflow: hidden;
+}
+
+.orders-container .modal-content_orders {
+    background: transparent !important;
+    border: none !important;
+    width: 100% !important;
+}
+
+/* Modal Header */
+.orders-container .modal-header {
+    background: #0056b3 !important;
+    color: white !important;
+    padding: 0.75rem 1.5rem !important;
+    border-bottom: none !important;
+}
+.orders-container .modal-title_orders {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    color: white !important; /* Ensure the title is white */
+    flex: 1;
+    text-align: left; /* Align to the left */
+    margin-left: 0; /* Remove previous margin */
+}
+
+.orders-container .close_orders {
+    color: white !important;
+    opacity: 0.9 !important;
+    font-size: 1.6rem !important;
+    font-weight: 400;
+    text-shadow: none !important;
+    background: none !important;
+    border: none !important;
+}
+
+
+/* Modal Body */
+.orders-container .modal-body_orders {
+    padding: 0.5rem 1.5rem !important;
+}
+
+/* Hide product info to match target */
+.orders-container .product-variant-info {
+    display: none !important;
+}
+
+/* --- DEFINITIVE FIX V2: Obliterate Bubble Style & Blue Outline --- */
+/* This is the key change. We are now targetting the exact structure. */
+.orders-container .modal-body_orders > div[style*="margin-bottom: 1rem"] {
+    /* Step 1: Nuke all bubble/card styles inherited from other stylesheets */
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important; /* This removes all borders, including the blue one */
+    padding: 0.9rem 0 !important;
+    margin: 0 !important;
+    
+    /* Step 2: Apply the correct clean line separator */
+    border-bottom: 0.0625rem solid #f0f0f0 !important; /* 1px -> 0.0625rem */
+}
+
+/* CRITICAL: Override the blue left border from seat_cover_fixes.css */
+.orders-container .modal p,
+.orders-container .modal-body_orders p {
+    background: none !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Remove the border from the very last item in the list */
+.orders-container .modal-body_orders > div[style*="margin-bottom: 1rem"]:last-of-type {
+    border-bottom: none !important;
+}
+
+/* Total Row - Special top border */
+.orders-container .total-amount-row {
+    border-top: 0.125rem solid #007bff !important; /* 2px -> 0.125rem */
+    padding-top: 0.9rem !important;
+    margin-top: 0.9rem !important;
+    font-weight: 600 !important;
+}
+
+/* Product Price Styling */
+.orders-container .product-price {
+    color: #007bff !important;
+    font-weight: 600 !important;
+}
+
+/* Savings Highlight */
+.orders-container .savings-highlight {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb) !important;
+    border: 0.0625rem solid #28a745 !important; /* 1px -> 0.0625rem */
+    border-radius: 0.5rem !important; /* 8px -> 0.5rem */
+    color: #155724 !important;
+    font-weight: 500 !important;
+}
+
+.orders-container .savings-highlight p {
+    margin: 0 !important;
+    font-size: 0.95rem !important;
+    text-align: center !important;
+}
+
+/* Modal Footer */
+.orders-container .modal-footer_orders {
+    background: #f8f9fa !important;
+    padding: 0.75rem 1.5rem !important;
+    border-top: 0.0625rem solid #dee2e6 !important; /* 1px -> 0.0625rem */
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.orders-container .btn-secondary_orders {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: white !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.375rem !important; /* 6px -> 0.375rem */
+    font-weight: 500 !important;
+    transition: background-color 0.3s !important;
+}
+
+.orders-container .btn-secondary_orders:hover {
+    background-color: #5a6268 !important;
+    border-color: #545b62 !important;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .orders-container .modal-dialog_orders {
+        max-width: 95% !important;
+        margin: 0.5rem !important;
+    }
+    
+    .orders-container .modal-body_orders {
+        padding: 0.5rem 1rem !important;
+    }
+    
+    .orders-container .modal-header,
+    .orders-container .modal-footer_orders {
+        padding: 0.75rem 1rem !important;
+    }
+}

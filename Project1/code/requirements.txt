@@ -1,0 +1,15 @@
+flask
+Flask-SQLAlchemy
+flask-login
+flask-jwt-extended
+flask-caching
+celery
+redis
+flask-caching
+razorpay
+gunicorn
+psycopg2-binary
+Flask-Migrate
+Authlib
+pytz
+Flask-Compress==1.13

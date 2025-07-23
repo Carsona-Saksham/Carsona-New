@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix Database Schema - Carsona Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-line;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Database Schema Fix</h1>
+        <p><strong>Issue:</strong> Poster columns are VARCHAR(255) but need to be TEXT to support base64 images.</p>
+        
+        <div class="warning">
+            <strong>⚠️ Admin Only:</strong> This operation requires admin privileges and will modify the database schema.
+        </div>
+        
+        <h3>Steps:</h3>
+        <ol>
+            <li>Make sure you're logged in as an admin</li>
+            <li>Click "Check Auth Status" to verify your authentication</li>
+            <li>Click "Fix Database Schema" to apply the fix</li>
+            <li>Try adding the seat covers category again</li>
+        </ol>
+        
+        <button id="checkAuthBtn" class="btn" onclick="checkAuthStatus()">Check Auth Status</button>
+        <button id="fixBtn" class="btn" onclick="fixDatabaseSchema()">Fix Database Schema</button>
+        <button id="testBtn" class="btn" onclick="testConnection()">Test Connection</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        async function checkAuthStatus() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<div class="warning">🔄 Checking authentication status...</div>';
+            
+            try {
+                const token = localStorage.getItem('access_token');
+                const userId = localStorage.getItem('user_id');
+                const isAdmin = localStorage.getItem('is_admin');
+                
+                results.innerHTML = `
+                    <div class="info">
+                        <strong>🔍 Authentication Status:</strong><br>
+                        Token exists: ${token ? 'Yes' : 'No'}<br>
+                        User ID: ${userId || 'Not found'}<br>
+                        Is Admin: ${isAdmin || 'Not found'}<br>
+                        Token preview: ${token ? token.substring(0, 20) + '...' : 'None'}
+                    </div>
+                `;
+                
+                // Also test the check_admin endpoint
+                const response = await fetch('/api/check_admin');
+                const data = await response.json();
+                
+                results.innerHTML += `
+                    <div class="info">
+                        <strong>🔍 Server Auth Check:</strong><br>
+                        Status: ${response.status}<br>
+                        Is Admin: ${data.is_admin}<br>
+                        Response: ${JSON.stringify(data)}
+                    </div>
+                `;
+                
+            } catch (error) {
+                results.innerHTML += `
+                    <div class="error">
+                        <strong>❌ Auth Check Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        async function fixDatabaseSchema() {
+            const btn = document.getElementById('fixBtn');
+            const results = document.getElementById('results');
+            
+            btn.disabled = true;
+            btn.textContent = 'Fixing...';
+            results.innerHTML = '<div class="warning">🔄 Fixing database schema...</div>';
+            
+            try {
+                const token = localStorage.getItem('access_token');
+                if (!token) {
+                    throw new Error('No access token found. Please login as admin first.');
+                }
+                
+                console.log('Making request with token:', token.substring(0, 20) + '...');
+                
+                const response = await fetch('/api/fix_database_schema', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                const responseText = await response.text();
+                console.log('Response text:', responseText);
+                
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (parseError) {
+                    throw new Error(`Failed to parse response: ${responseText}`);
+                }
+                
+                if (response.ok) {
+                    results.innerHTML = `
+                        <div class="success">
+                            <strong>✅ ${data.message}</strong><br><br>
+                            ${data.results.join('<br>')}
+                        </div>
+                    `;
+                } else {
+                    results.innerHTML = `
+                        <div class="error">
+                            <strong>❌ Error (${response.status}):</strong> ${data.error || data.message || 'Unknown error'}<br>
+                            <strong>Full response:</strong> ${JSON.stringify(data)}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                results.innerHTML = `
+                    <div class="error">
+                        <strong>❌ Error:</strong> ${error.message}
+                    </div>
+                `;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Fix Database Schema';
+            }
+        }
+        
+        async function testConnection() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<div class="warning">🔄 Testing connection...</div>';
+            
+            try {
+                const response = await fetch('/api/categories');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    results.innerHTML = `
+                        <div class="success">
+                            <strong>✅ Connection successful!</strong><br>
+                            Found ${data.categories ? data.categories.length : 0} categories.
+                        </div>
+                    `;
+                } else {
+                    results.innerHTML = `
+                        <div class="error">
+                            <strong>❌ Connection failed:</strong> ${response.status}<br>
+                            Response: ${JSON.stringify(data)}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                results.innerHTML = `
+                    <div class="error">
+                        <strong>❌ Connection error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html> 

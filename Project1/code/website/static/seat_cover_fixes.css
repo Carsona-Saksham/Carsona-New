@@ -1,0 +1,2611 @@
+/* SEAT COVER DETAILS PAGE LAYOUT FIXES */
+/* Clean and minimal styles for the seat cover details page */
+
+/* Apply background to body when seat cover details page is active */
+body:has(.seat-cover-details-container) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Restore default gradient background everywhere else */
+body:not(:has(.seat-cover-details-container)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important; /* same as user pages */
+}
+
+/* DIRECT ADMIN PAGE TARGETING - More reliable approach */
+/* Admin pages should have these classes applied directly */
+.admin-page-background {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Force admin page backgrounds with high specificity */
+body.admin-page,
+html body.admin-page {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* IMMEDIATE CSS FIX - Override any dark backgrounds for common admin page patterns */
+/* This works immediately without waiting for JavaScript */
+
+/* Target pages with admin navigation + forms */
+body:has(.navbar-light.bg-light .admin-links),
+body:has(.navbar-light.bg-light .container-fluid),
+body:has(.admin-links) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Target Add Seat Cover and similar admin forms */
+body:has(.container.mt-4 h2),
+body:has(.variant-section),
+body:has(.color-variants-section) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Emergency override - any page with admin elements gets gradient background */
+/* But exclude user pages and seat cover details */
+body:not(.container-userhome):not(.container-mycars):not(:has(.seat-cover-details-container)):has(.admin-links),
+body:not(.container-userhome):not(.container-mycars):not(:has(.seat-cover-details-container)):has(.navbar-light.bg-light),
+body:not(.container-userhome):not(.container-mycars):not(:has(.seat-cover-details-container)):has(.container-fluid),
+body:not(.container-userhome):not(.container-mycars):not(:has(.seat-cover-details-container)):has(.container.mt-4) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Most aggressive override - if page has Bootstrap admin navbar, make it gradient */
+/* This should catch the admin home and add seat cover pages */
+.navbar-light.bg-light ~ * {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Override the body background for admin pages */
+body:has(.navbar-light.bg-light):not(:has(.navbar-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* ADMIN PAGES BACKGROUND FIX - VERY SPECIFIC TO AVOID AFFECTING USER PAGES */
+/* Only target admin pages - exclude user pages with navbar-userhome */
+body:has(.admin-links):not(:has(.navbar-userhome)), 
+body:has(.admin-orders-container):not(:has(.navbar-userhome)),
+body:has(.orders-container):not(:has(.navbar-userhome)),
+body:has(.page-title):not(:has(.navbar-userhome)),
+body:has(.admin-home):not(:has(.navbar-userhome)),
+body:has(.coupons-container):not(:has(.navbar-userhome)),
+body:has(.categories-container):not(:has(.navbar-userhome)),
+body:has(.brands-container):not(:has(.navbar-userhome)),
+body:has(.seat-covers-admin):not(:has(.navbar-userhome)),
+body:has(.theaters-container):not(:has(.navbar-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important; /* Gradient background for admin pages only */
+}
+
+/* Force gradient background for admin navbar pages only (exclude user pages) */
+body:has(.navbar-light.bg-light):not(:has(.navbar-userhome)):not(:has(.container-userhome)):not(:has(.container-mycars)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* More specific targeting for admin components - exclude user pages */
+body:has([class*="admin"]):not(:has(.navbar-userhome)),
+body:has([class*="Admin"]):not(:has(.navbar-userhome)),
+body:has(.form):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.container-fluid):not(:has(.navbar-userhome)):not(:has(.container-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Target specific admin form pages like Add Seat Cover - exclude user pages */
+body:has(.container.mt-4):not(:has(.navbar-userhome)),
+body:has(.variant-section):not(:has(.navbar-userhome)),
+body:has(.color-variants-section):not(:has(.navbar-userhome)),
+body:has(.car-selection-container):not(:has(.navbar-userhome)),
+body:has(.form-control):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.form-check):not(:has(.navbar-userhome)):not(:has(.container-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Target admin pages with Bootstrap container and form elements - exclude user pages */
+body:has(.container):has(.form-label):not(:has(.navbar-userhome)),
+body:has(.container):has(.btn):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.container):has(form):not(:has(.navbar-userhome)):not(:has(.container-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* COMPREHENSIVE ADMIN PAGES BACKGROUND FIX - EXCLUDE USER PAGES */
+/* Target admin home page specifically - exclude user pages */
+body:has(.cards-list):has(.admin-links):not(:has(.navbar-userhome)),
+body:has(.banner):has(.admin-links):not(:has(.navbar-userhome)),
+body:has(.footer__nav):has(.admin-links):not(:has(.navbar-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Target Add Seat Cover page and similar admin forms - exclude user pages */
+body:has(.container.mt-4):has(h2):not(:has(.navbar-userhome)),
+body:has(.variant-section):has(.form-label):not(:has(.navbar-userhome)),
+body:has(.color-variants-section):has(.form-control):not(:has(.navbar-userhome)),
+body:has(.car-selection-container):has(.form-check):not(:has(.navbar-userhome)),
+body:has(.color-variant-item):has(.border):not(:has(.navbar-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Target admin form elements only - exclude user pages */
+body:has(form):has(.form-label):has(.btn):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.mb-3):has(.form-control):has(.container):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.variant-section):has(.mb-4):not(:has(.navbar-userhome)),
+body:has(.car-controls):has(.form-check):not(:has(.navbar-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Target admin pages with specific Vue.js component structures - exclude user pages */
+body:has(.navbar-light):has(.container-fluid):has(.form-control):not(:has(.navbar-userhome)),
+body:has(.navbar-light):has(.container-fluid):has(.cards-list):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.navbar-light):has(.container-fluid):has(.admin-links):not(:has(.navbar-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* More specific targeting for admin home components - exclude user pages */
+body:has(.banner):has(.cards-list):has(.footer):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.container-fluid):has(.admin-links):has(.dropdown-menu):not(:has(.navbar-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Target admin navigation patterns only - exclude user pages */
+body:has(.navbar-brand):has(.admin-links):has(.nav-item):not(:has(.navbar-userhome)),
+body:has(.navbar-brand):has(.container-fluid):has(.dropdown-toggle):not(:has(.navbar-userhome)):not(:has(.container-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* FALLBACK RULES - Target specific admin page patterns - EXCLUDE USER PAGES */
+/* Admin Home Page Pattern - exclude user pages */
+body:has(nav.navbar.navbar-expand-lg.navbar-light.bg-light):has(.cards-list):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.navbar-brand[href="/"]):has(.admin-links):not(:has(.navbar-userhome)),
+body:has(.banner):has(img[src*="banner"]):has(.cards-list):not(:has(.navbar-userhome)):not(:has(.container-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Add Seat Cover Page Pattern - exclude user pages */
+body:has(.container.mt-4):has(h2):has(form):not(:has(.navbar-userhome)),
+body:has(form[action=""]):has(.variant-section):not(:has(.navbar-userhome)),
+body:has(.navbar-brand[href="/"]):has(.container.mt-4):not(:has(.navbar-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Generic admin form patterns - exclude user pages */
+body:has(.navbar-light.bg-light):has(.container):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.navbar-light.bg-light):has(.form-control):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.navbar-light.bg-light):has(.btn):not(:has(.navbar-userhome)):not(:has(.container-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Catch-all for Vue.js admin components - exclude user pages */
+body:has(.navbar-nav):has(.form-control):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.navbar-nav):has(.cards-list):not(:has(.navbar-userhome)):not(:has(.container-userhome)),
+body:has(.dropdown-toggle):has(.form-label):not(:has(.navbar-userhome)):not(:has(.container-userhome)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Ultimate fallback - admin navbar-light pages only (exclude user pages) */
+body:has(.navbar-light):not(:has(.navbar-userhome)):not(:has(.container-userhome)):not(:has(.container-mycars)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* GLOBAL BACKGROUND FIX - Override dark backgrounds but preserve special pages */
+/* This is the most aggressive approach - set light background globally with exceptions */
+
+/* Global background override - Use same gradient as user pages */
+body {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Exception 1: Seat cover details page keeps its gradient */
+body:has(.seat-cover-details-container) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Exception 2: Login page keeps its dark background */
+body:has(.container-login) {
+  background-color: #1a1a1a !important;
+  background-image: url('../static/SeatCoverTry.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Override any dark background styles - use same gradient as user pages */
+body:not(:has(.navbar-userhome)):not(:has(.container-userhome)):not(:has(.container-mycars)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* CRITICAL: Global background override with highest specificity - exclude user pages */
+html body:not(:has(.navbar-userhome)):not(:has(.container-userhome)):not(:has(.container-mycars)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Even higher specificity for stubborn admin cases - exclude user pages */
+html body:not(.seat-cover-details-page):not(:has(.navbar-userhome)):not(:has(.container-userhome)):not(:has(.container-mycars)) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Exception: Keep seat cover details page with its special background */
+body:has(.seat-cover-details-container) {
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Override any parent container constraints */
+body:has(.seat-cover-details-container) * {
+  max-width: none !important;
+}
+
+/* Main container setup */
+.seat-cover-details-container {
+  padding-top: 4rem !important;
+  margin: 0 1rem 2rem 1rem !important; /* minimal side-margins to avoid overflow */
+  width: 100% !important;              /* full-width so it never exceeds viewport */
+  box-sizing: border-box !important;   /* include padding in width calc */
+  min-height: 100vh !important;
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0) !important;
+}
+
+/* Allow content to stretch across full screen */
+.seat-cover-details-container > * {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Force full width for main sections */
+.seat-cover-details-container,
+.seat-cover-details-container .main-content-layout {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Variant section full width */
+.seat-cover-details-container .variant-selection-section {
+  width: calc(100% - 4rem) !important;
+  max-width: none !important;
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+/* Product Name Section */
+.product-name-section {
+  background: rgba(255, 255, 255, 0.95) !important;
+  padding: 1.5rem 1.5rem !important; /* Added left/right margins */
+  margin: 0 5rem 2rem 5rem !important; /* Added left/right margins */
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  margin-top: 2rem !important; /* increased upper margin */
+}
+
+.product-name-section h4 {
+  margin: 0 !important;
+  font-size: clamp(0.5rem, 1vw + 0.5rem, 2rem) !important; /* responsive */
+  font-weight: 700 !important;
+  color: #333 !important;
+  text-align: center !important;
+}
+
+/* Main Content Layout */
+.main-content-layout {
+  display: flex !important;
+  gap: 2rem !important;
+  padding: 0 1.5rem !important; /* modest side padding */
+  margin-bottom: 2rem !important;
+  align-items: flex-start !important;
+  justify-content: center !important; /* center pair so side gaps equal */
+}
+
+/* Image Container - Left Side */
+.main-content-layout .image-container {
+  flex: 0 0 auto !important; /* prevent flex-grow stretching, clamp takes effect */
+  width: clamp(7rem, 34vw, 50rem) !important; /* responsive width */
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  padding: 0rem !important;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: crosshair !important;
+  order: 1 !important; /* Ensure image comes first */
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 0 !important; /* reset – centering handled by flex */
+  margin-left: 0 !important; /* equal margins—gap handles spacing */
+  align-items: center !important; /* center columns vertically */
+}
+
+/* Seat Cover Image Sizing */
+.main-content-layout .image-container .seat-cover-image {
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Bill Details Section */
+.main-content-layout .bill-details-section {
+  flex: 0 0 auto !important; /* prevent flex-grow stretching */
+  width: auto !important;
+  width: clamp(7rem, 40vw, 50rem) !important; /* responsive bill box */
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 15px !important;
+  padding: 0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  order: 2 !important; /* Ensure bill details comes second */
+  margin-left: 0 !important;   /* rely on flex gap for spacing */
+}
+
+.main-content-layout .bill-details-section .content-box {
+  padding: 1.5rem !important;
+}
+
+.main-content-layout .bill-details-section h4 {
+  font-weight: 600 !important;
+  color: white !important;
+  background: #0056b3 !important;
+  padding: 0.75rem !important;
+  border-radius: 15px !important;
+  text-align: center !important;
+  margin: 0 0 1rem 0 !important;
+  font-size: 1.4rem !important;
+}
+
+/* Bill Details Items */
+.bill-details-section .flex.d-md-flex.items-center {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0.75rem 0 !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  width: 100% !important;
+}
+
+.bill-details-section .flex.d-md-flex.items-center p {
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+  flex: 1 !important;
+  color: #555 !important;
+}
+
+.bill-details-section .product-price {
+  font-weight: bold !important;
+  color: #0056b3 !important;
+  text-align: right !important;
+  flex: 0 0 auto !important;
+}
+
+/* Savings Highlight */
+.savings-highlight {
+  background: #d4edda !important;
+  color: #155724 !important;
+  padding: 0.75rem !important;
+  border-radius: 8px !important;
+  margin: 1rem 0 !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+  border: 1px solid #c3e6cb !important;
+}
+
+/* Coupon Section */
+.coupon-section-wrapper {
+  margin: 1rem 0 !important;
+  text-align: center !important;
+}
+
+.btn-apply-coupon {
+  background: #0056b3 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.6rem 0.75rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+  width: auto !important;
+  display: inline-block !important;
+  min-width: 150px !important;
+  margin-bottom: -0.6rem !important;
+}
+
+.btn-apply-coupon:hover {
+  background: #004494 !important;
+}
+
+.coupon-success {
+  background: #d4edda !important;
+  color: #155724 !important;
+  padding: 0.75rem !important;
+  border-radius: 8px !important;
+  margin: 1rem 0 !important;
+  border: 1px solid #c3e6cb !important;
+  position: relative !important;
+}
+
+.bill-details-section .btn.btn-primary {
+  background: #0056b3 !important;
+  border: none !important;
+  padding: 0.8rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.bill-details-section .btn.btn-primary:hover {
+  background: #004494 !important;
+}
+
+/* Variant Selection Section */
+.variant-selection-section {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 15px !important;
+  padding: 2rem !important;
+  margin: 2rem 1rem 3rem 1rem !important; /* more bottom margin */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.variant-selection-section h5 {
+  margin: 0 0 1.5rem 0 !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+}
+
+/* Variants Container */
+.variants-container {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 1.5rem !important;
+}
+
+.variant-card {
+  background: white !important;
+  border: 2px solid #e0e0e0 !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.variant-card:hover {
+  border-color: #0056b3 !important;
+  box-shadow: 0 4px 12px rgba(0, 86, 179, 0.1) !important;
+}
+
+.variant-card.selected {
+  border-color: #28a745 !important;
+  background: #f8fff9 !important;
+}
+
+.variant-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 1rem !important;
+}
+
+.variant-header h6 {
+  margin: 0 !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+}
+
+.variant-discount-badge {
+  background: #ff6b6b !important;
+  color: white !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+}
+
+.variant-price {
+  margin: 1rem 0 !important;
+}
+
+.variant-price .original-price {
+  text-decoration: line-through !important;
+  color: #999 !important;
+  margin-right: 0.5rem !important;
+}
+
+.variant-price .final-price {
+  color: #0056b3 !important;
+  font-weight: bold !important;
+}
+
+.variant-description {
+  color: #666 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+}
+
+.selected-badge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  color: #28a745 !important;
+  font-weight: 600 !important;
+  margin-top: 1rem !important;
+}
+
+.selected-badge svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed !important;
+  top: -10% !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 120% !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 1000 !important;
+}
+
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 1000 !important;
+}
+
+.modal-content {
+  background: white !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  max-width: 600px !important;
+  width: 90% !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.modal-header {
+  padding: 1.5rem !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.modal-header h3 {
+  margin: 0 !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+}
+
+.close-btn {
+  background: none !important;
+  border: none !important;
+  font-size: 1.5rem !important;
+  cursor: pointer !important;
+  color: #999 !important;
+  padding: 0 !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+}
+
+.close-btn:hover {
+  background: #f0f0f0 !important;
+  color: #333 !important;
+}
+
+.modal-body {
+  padding: 1.5rem !important;
+}
+
+.coupon-item {
+  border: 2px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  margin-bottom: 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.coupon-item:hover {
+  border-color: #0056b3 !important;
+  box-shadow: 0 2px 8px rgba(0, 86, 179, 0.1) !important;
+}
+
+.coupon-item.selected {
+  border-color: #28a745 !important;
+  background: #f8fff9 !important;
+}
+
+.coupon-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.coupon-header h4 {
+  margin: 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+}
+
+.savings-badge {
+  background: #28a745 !important;
+  color: white !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+}
+
+.coupon-details p {
+  margin: 0.5rem 0 !important;
+  color: #666 !important;
+  font-size: 0.9rem !important;
+}
+
+.coupon-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 0.5rem !important;
+  padding-top: 0.5rem !important;
+  border-top: 1px solid #f0f0f0 !important;
+}
+
+.discount-badge {
+  background: #0056b3 !important;
+  color: white !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+}
+
+.min-amount {
+  color: #666 !important;
+  font-size: 0.8rem !important;
+}
+
+.no-coupons {
+  text-align: center !important;
+  padding: 2rem !important;
+  color: #666 !important;
+}
+
+/* Magnifying Glass */
+.magnifying-glass {
+  position: absolute !important;
+  width: 250px !important;
+  height: 250px !important;
+  border: 3px solid #fff !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  z-index: 10 !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.magnifying-glass.active {
+  opacity: 1 !important;
+}
+
+/* Modern Coupon Success Animation */
+.center-screen-coupon-success {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: #ffffff !important;
+  padding: 3rem 2.5rem !important;
+  border-radius: 1.5rem !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  z-index: 10000 !important;
+  text-align: center !important;
+  min-width: 28rem !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  overflow: hidden !important;
+}
+
+.center-screen-coupon-success::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%) !important;
+  animation: shimmer 2s infinite !important;
+}
+
+.center-screen-coupon-success h3 {
+  color: #ffffff !important;
+  margin-bottom: 1rem !important;
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.center-screen-coupon-success p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 0 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.6 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) !important;
+  }
+  100% {
+    transform: translateX(100%) !important;
+  }
+}
+
+/* Enhanced confetti animation */
+.confetti-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+}
+
+.confetti-piece {
+  position: absolute !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  animation: confetti-fall 3s linear infinite !important;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg) !important;
+    opacity: 1 !important;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) !important;
+    opacity: 0 !important;
+  }
+}
+
+/* Smooth background pulse for total amount */
+@keyframes backgroundPulse {
+  0%, 100% {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  }
+  50% {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+  }
+}
+
+/* Enhanced pulse effect for total amount */
+.pulse-effect {
+  animation: enhanced-pulse 1s ease-in-out 3 !important;
+}
+
+@keyframes enhanced-pulse {
+  0%, 100% {
+    transform: scale(1) !important;
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4) !important;
+  }
+  50% {
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0) !important;
+  }
+}
+
+/* Bounce animation for emoji */
+@keyframes bounce {
+  0% {
+    transform: translateY(0) !important;
+  }
+  100% {
+    transform: translateY(-10px) !important;
+  }
+}
+
+/* Loading overlay for seat cover details */
+.loading-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 9999 !important;
+}
+
+.loading-overlay .loading-spinner {
+  width: 50px !important;
+  height: 50px !important;
+  border: 5px solid #f3f3f3 !important;
+  border-top: 5px solid #3498db !important;
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+  margin-bottom: 20px !important;
+}
+
+.loading-overlay p {
+  font-size: 1.2rem !important;
+  color: #333 !important;
+  margin: 0 !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg) !important; }
+  100% { transform: rotate(360deg) !important; }
+}
+
+/* Coupon Success Box Styling */
+.coupon-success {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb) !important;
+  border: 1px solid #c3e6cb !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  margin-top: 1rem !important;
+  color: #155724 !important;
+  font-size: 0.9rem !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.coupon-success button:hover {
+  background: rgba(220, 53, 69, 0.1) !important;
+  border-radius: 50% !important;
+  transform: scale(1.1) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Coupon Removed Notification Animation */
+.coupon-removed-notification {
+  animation: slideInRight 0.3s ease forwards !important;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0 !important;
+    transform: translateX(100%) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+}
+
+/* Coupon section wrapper */
+.coupon-section-wrapper {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.btn-apply-coupon {
+  background: linear-gradient(135deg, #0056b3, #004494) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  width: auto !important;
+  margin-bottom: 0.5rem !important;
+  display: inline-block !important;
+  min-width: 9rem !important;
+}
+
+.btn-apply-coupon:hover {
+  background: linear-gradient(135deg, #004494, #003366) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content-layout {
+    /* Keep items side-by-side on tablet/mobile */
+    flex-direction: row !important;
+    flex-wrap: wrap !important; /* allow wrap if absolutely necessary */
+    gap: 1.25rem !important;
+  }
+
+  .main-content-layout .image-container {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .main-content-layout .bill-details-section {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    min-width: auto !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ensure horizontal side-by-side even on smaller phones */
+  .main-content-layout {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+  }
+
+  .main-content-layout .image-container,
+  .main-content-layout .bill-details-section {
+    margin-left: 0 !important;
+    width: clamp(7rem, 40vw, 50rem) !important; /* maintain ~40vw width each */
+  }
+
+  .seat-cover-details-container {
+    padding-top: 4rem !important;
+    margin: 0 1rem 2rem 1rem !important; /* minimal side margins */
+    width: 100% !important;             /* full viewport width */
+  }
+
+  .product-name-section {
+    margin: 0 1rem 1rem 1rem !important;
+    padding: 1rem 1.5rem !important;
+  }
+
+  .product-name-section h4 {
+    font-size: 1.5rem !important;
+  }
+
+  .main-content-layout {
+    padding: 0 1rem !important;
+  }
+
+  .variant-selection-section {
+    margin: 2rem 1rem !important;
+    padding: 1.5rem !important;
+  }
+
+  .variants-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .modal-content {
+    width: 95% !important;
+    margin: 1rem !important;
+  }
+
+  .center-screen-coupon-success {
+    min-width: 300px !important;
+    padding: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content-layout {
+    flex-direction: column !important; /* finally stack for very narrow devices */
+  }
+}
+
+/* Styles for seat covers listing page */
+.cards-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 60px;
+    padding: 25px 40px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Pagination Styles for Seat Covers */
+.pagination-container {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 40px;
+}
+
+.pagination-info {
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 0.5rem;
+    border-left: 4px solid #007bff;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    background-color: #ffffff;
+    color: #495057;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    user-select: none;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    color: #212529;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-btn.active {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.25);
+}
+
+.pagination-btn.active:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #ffffff;
+}
+
+.pagination-btn:disabled {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+.pagination-btn:disabled:hover {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #6c757d;
+    transform: none;
+    box-shadow: none;
+}
+
+.pagination-info-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background-color: rgba(248, 249, 250, 0.9);
+    border-radius: 0.375rem;
+    border: 1px solid rgba(233, 236, 239, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.pagination-info-bottom span {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Responsive Design for Seat Covers Pagination */
+@media (max-width: 768px) {
+    .pagination-container {
+        padding: 0 20px;
+    }
+    
+    .pagination-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem;
+        padding: 0.5rem;
+    }
+    
+    .pagination-btn {
+        min-width: 2.25rem;
+        height: 2.25rem;
+        font-size: 0.85rem;
+    }
+    
+    .pagination-info p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination-container {
+        padding: 0 10px;
+    }
+    
+    .pagination-controls {
+        gap: 0.125rem;
+    }
+    
+    .pagination-btn {
+        min-width: 2rem;
+        height: 2rem;
+        font-size: 0.8rem;
+    }
+    
+    .pagination-info {
+        padding: 0.5rem 1rem;
+    }
+}
+
+.seat-covers-content .product-card {
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    cursor: pointer !important;
+    height: 550px !important;
+    width: 100% !important;
+    max-height: none !important;
+    max-width: none !important;
+    position: relative !important;
+}
+
+.seat-covers-content .product-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.product-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.seat-covers-content .card-content {
+    padding: 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    height: 380px !important;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.price-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.variant-info {
+    font-size: 0.9rem;
+    color: #28a745;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+/* Discount badge - always visible */
+.product-card .discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4757;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2;
+    opacity: 1;
+    visibility: visible;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none !important;
+    color: #000 !important;
+    border: none;
+    border-radius: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 10;
+    box-shadow: none !important;
+}
+
+.close-button:hover {
+    background: rgba(0, 0, 0, 0.1) !important;
+    transform: scale(1.1);
+    color: #333 !important;
+}
+
+.card-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover {
+    color: #0056b3;
+}
+
+/* Styles for My Orders page variant display */
+.product-variant-info {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.product-variant-info h6 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.variant-badge {
+    display: inline-block;
+    background-color: #f3f0ff;
+    color: #6200ea;
+    border: 1px solid #d4c4fb;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.address-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5rem;
+  margin-left: 2rem;
+}
+
+.address-content {
+  display: flex;
+}
+
+/* Address Modal Styling */
+.modal .close {
+  margin-left: 1rem !important;
+  font-size: 2rem !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  color: #999 !important;
+  transition: color 0.3s ease !important;
+}
+
+.modal .close:hover {
+  color: #333 !important;
+}
+
+/* Add New Address Button Styling */
+.modal .btn.btn-secondary {
+  margin-bottom: 2rem !important;
+  margin-left: 4rem !important;
+  margin-right: 4rem !important;
+  margin-top: 1rem !important;
+  padding: 0.75rem 1.5rem !important;
+  background-color: #0056b3 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.modal .btn.btn-secondary:hover {
+  background-color: #004494 !important;
+}
+
+/* Book Slot Button Styling */
+.modal .btn.btn-primary {
+  margin-bottom: 1rem !important;
+  margin-left: 4rem !important;
+  margin-right: 4rem !important;
+  margin-top: 2rem !important;
+  padding: 0.75rem 1.5rem !important;
+  background-color: #0056b3 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.modal .btn.btn-primary:hover {
+  background-color: #004494 !important;
+}
+
+/* Slot List Styling */
+.slot-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 4rem;
+}
+
+/* Confirmation Modal Styling */
+
+.modal p {
+  background: #f8f9fa !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 8px !important;
+  margin: 1rem 4rem 1rem 4rem !important;
+  border-left: 4px solid #0056b3 !important;
+  font-size: 1.1rem !important;
+  color: #333 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.modal p strong {
+  color: #0056b3 !important;
+  font-weight: 600 !important;
+  margin-right: 0.5rem !important;
+}
+
+/* Modal Button Container
+.modal div:last-child {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+  margin: 2rem !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid #e0e0e0 !important;
+} */
+
+/* Seat Covers Page Layout with Sidebar */
+.seat-covers-main-container {
+  display: flex;
+  min-height: calc(100vh - 80px); /* Adjust based on navbar height */
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0);
+}
+
+.seat-covers-sidebar {
+  width: 20%;
+  min-width: 280px;
+  max-width: 350px;
+  background: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 85px; /* Increased from 80px to ensure it stays below navbar */
+  height: fit-content;
+  max-height: calc(100vh - 85px); /* Adjusted to match the top value */
+  overflow-y: auto;
+  z-index: 5; /* Reduced from 10 to ensure navbar stays on top */
+}
+
+.seat-covers-content {
+  flex: 1;
+  width: 80%;
+  padding: 0;
+}
+
+.seat-covers-content.full-width {
+  width: 100%;
+}
+
+.sidebar-content {
+  padding: 20px;
+}
+
+/* Selected Car Section */
+.selected-car-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.selected-car-section h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.selected-car-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.selected-car-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.selected-car-info h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.btn-change-car, .btn-select-car {
+  background: #0056b3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.btn-change-car:hover, .btn-select-car:hover {
+  background: #004494;
+}
+
+.no-car-selected {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.no-car-selected p {
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+/* Sort Section */
+.sort-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sort-section h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.sort-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sort-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.sort-option:hover {
+  background: #f8f9fa;
+}
+
+.sort-option input[type="radio"] {
+  margin-right: 10px;
+  accent-color: #0056b3;
+}
+
+.sort-option span {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Filter Section */
+.filter-section h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.filter-section h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 20px 0 10px 0;
+}
+
+.price-filter {
+  margin-bottom: 25px;
+}
+
+.price-range {
+  margin-bottom: 15px;
+}
+
+.price-range label {
+  display: block;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.price-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #e0e0e0;
+  outline: none;
+  cursor: pointer;
+}
+
+.price-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0056b3;
+  cursor: pointer;
+}
+
+.price-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0056b3;
+  cursor: pointer;
+  border: none;
+}
+
+/* Discount Filter */
+.discount-filter {
+  margin-bottom: 25px;
+}
+
+.discount-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.discount-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.discount-option:hover {
+  background: #f8f9fa;
+}
+
+.discount-option input[type="radio"] {
+  margin-right: 10px;
+  accent-color: #0056b3;
+}
+
+.discount-option span {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Clear Filters Button */
+.btn-clear-filters {
+  background: #0056b3 !important;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-clear-filters:hover {
+  background: #004494 !important;
+}
+
+/* Filter Info */
+.filter-info {
+  margin-top: 10px;
+}
+
+.filter-info p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* No Results */
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 60px 40px;
+  width: 100%;
+}
+
+.no-results-content {
+  text-align: center;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 20px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.no-results-content h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  margin-left: 0rem;
+
+}
+
+.no-results-content p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* Clear Filters Button in No Results */
+.no-results-content .btn-clear-filters {
+  background: #0056b3 !important;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 180px;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.no-results-content .btn-clear-filters:hover {
+  background: #004494 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.3);
+}
+
+/* Responsive Design for Sidebar */
+@media (max-width: 1024px) {
+  .seat-covers-sidebar {
+    width: 25%;
+    min-width: 250px;
+  }
+  
+  .seat-covers-content {
+    width: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  .seat-covers-main-container {
+    flex-direction: column;
+  }
+  
+  .seat-covers-sidebar {
+    width: 100%;
+    max-width: none;
+    position: relative;
+    top: 0;
+    max-height: none;
+    order: 2;
+  }
+  
+  .seat-covers-content {
+    width: 100%;
+    order: 1;
+  }
+  
+  .sidebar-content {
+    padding: 15px;
+  }
+  
+  .selected-car-image {
+    height: 100px;
+  }
+}
+
+/* Adjust cards list for sidebar layout */
+.seat-covers-content .cards-list {
+  padding: 25px 20px 25px 40px; /* Add left padding when sidebar is present */
+}
+
+.seat-covers-content.full-width .cards-list {
+  padding: 25px 40px; /* Normal padding for admin view */
+}
+
+/* Payment Page Styles - Unique class names to avoid conflicts */
+/* Payment Page Styles */
+.razorpay-payment-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding-top: 80px;
+}
+
+/* Progress Indicator */
+.razorpay-progress-container {
+  background: white;
+  padding: 2rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.razorpay-progress-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.razorpay-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 120px;
+}
+
+.razorpay-step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  background: #e9ecef;
+  color: #6c757d;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.razorpay-progress-step.completed .razorpay-step-circle {
+  background: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+.razorpay-progress-step.active .razorpay-step-circle {
+  background: #0056b3;
+  color: white;
+  border-color: #0056b3;
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.2);
+}
+
+.razorpay-progress-step span {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.razorpay-progress-step.completed span,
+.razorpay-progress-step.active span {
+  color: #333;
+  font-weight: 600;
+}
+
+.razorpay-progress-line {
+  flex: 1;
+  height: 2px;
+  background: #e9ecef;
+  margin: 0 1rem;
+  position: relative;
+  top: -20px;
+}
+
+.razorpay-progress-line.completed {
+  background: #28a745;
+}
+
+.razorpay-progress-line.active {
+  background: linear-gradient(to right, #28a745 50%, #e9ecef 50%);
+}
+
+/* Main Content */
+.razorpay-payment-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.razorpay-main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Order Details Section */
+.razorpay-order-details {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.razorpay-order-card {
+  height: 100%;
+}
+
+.razorpay-card-header {
+  background: linear-gradient(135deg, #0056b3, #004494);
+  color: white;
+  padding: 2rem;
+}
+
+.razorpay-card-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.razorpay-order-content {
+  padding: 2rem;
+}
+
+.razorpay-product-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.razorpay-product-icon {
+  background: #e8f4fd;
+  color: #0056b3;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.razorpay-product-details h4 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.razorpay-variant {
+  color: #28a745;
+  font-weight: 500;
+  margin: 0;
+}
+
+.razorpay-customer-info {
+  margin-bottom: 2rem;
+}
+
+.razorpay-customer-info h5 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.razorpay-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  color: #666;
+}
+
+.razorpay-info-item svg {
+  color: #0056b3;
+  flex-shrink: 0;
+}
+
+.razorpay-address-text {
+  line-height: 1.4;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.razorpay-price-breakdown {
+  border-top: 2px solid #e9ecef;
+  padding-top: 1.5rem;
+}
+
+.razorpay-total-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.razorpay-amount {
+  color: #0056b3;
+  font-size: 1.5rem;
+}
+
+/* Payment Section */
+.razorpay-payment-section {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.razorpay-payment-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.razorpay-payment-header {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.razorpay-header-icon {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.razorpay-payment-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.razorpay-payment-header p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.razorpay-payment-methods {
+  padding: 2rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.razorpay-payment-methods h4 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.razorpay-methods-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.razorpay-method-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.razorpay-method-item:hover {
+  background: #e8f4fd;
+  transform: translateY(-2px);
+}
+
+.razorpay-method-icon {
+  font-size: 1.5rem;
+}
+
+.razorpay-method-item span {
+  font-weight: 500;
+  color: #333;
+}
+
+.razorpay-payment-actions {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.razorpay-payment-btn {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0056b3, #004494);
+  border: none;
+  color: white;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.razorpay-payment-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #004494, #003366);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 86, 179, 0.4);
+}
+
+.razorpay-payment-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.razorpay-btn-secondary {
+  width: 100%;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  background: #6c757d;
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.razorpay-btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.razorpay-payment-security {
+  padding: 2rem;
+  background: #f8f9fa;
+}
+
+.razorpay-security-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.razorpay-security-header h5 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.razorpay-security-header svg {
+  color: #28a745;
+}
+
+.razorpay-security-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.razorpay-security-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.razorpay-security-badge {
+  font-size: 1.2rem;
+}
+
+.razorpay-security-text {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .razorpay-main-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .razorpay-progress-step {
+    min-width: 100px;
+  }
+  
+  .razorpay-progress-step span {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .razorpay-payment-content {
+    padding: 1rem;
+  }
+  
+  .razorpay-progress-bar {
+    padding: 0 1rem;
+  }
+  
+  .razorpay-progress-step {
+    min-width: 80px;
+  }
+  
+  .razorpay-step-circle {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  .razorpay-progress-step span {
+    font-size: 0.75rem;
+  }
+  
+  .razorpay-card-header,
+  .razorpay-payment-header {
+    padding: 1.5rem;
+  }
+  
+  .razorpay-order-content,
+  .razorpay-payment-methods,
+  .razorpay-payment-actions,
+  .razorpay-payment-security {
+    padding: 1.5rem;
+  }
+  
+  .razorpay-methods-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .razorpay-payment-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .razorpay-security-features {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .razorpay-progress-container {
+    padding: 1rem 0;
+  }
+  
+  .razorpay-progress-step span {
+    display: none;
+  }
+  
+  .razorpay-step-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+  
+  .razorpay-progress-line {
+    margin: 0 0.5rem;
+  }
+}
+
+/* Loading Animation */
+.razorpay-payment-btn:disabled::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: razorpay-spin 1s ease-in-out infinite;
+  margin-left: 10px;
+}
+
+@keyframes razorpay-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Loading Indicator Styles */
+.loading-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  min-height: 400px !important;
+  padding: 3rem 1rem !important;
+  margin: 2rem 0 !important;
+}
+
+.loading-content {
+  text-align: center !important;
+  max-width: 500px !important;
+}
+
+.loading-spinner {
+  width: 60px !important;
+  height: 60px !important;
+  border: 4px solid #f3f3f3 !important;
+  border-top: 4px solid #0056b3 !important;
+  border-radius: 50% !important;
+  animation: loading-spin 1s linear infinite !important;
+  margin: 0 auto 1.5rem auto !important;
+}
+
+.loading-text {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+.loading-subtext {
+  font-size: 1rem !important;
+  color: #666 !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+@keyframes loading-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Loading state for cards list - prevent layout shift */
+.cards-list.loading {
+  min-height: 400px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Load More Button Styles */
+.load-more-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 2rem 0 !important;
+  grid-column: 1 / -1 !important; /* Span full width in grid */
+}
+
+.btn-load-more {
+  background: linear-gradient(135deg, #0056b3, #004494) !important;
+  color: white !important;
+  border: none !important;
+  padding: 1rem 2rem !important;
+  border-radius: 50px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3) !important;
+  min-width: 200px !important;
+}
+
+.btn-load-more:hover {
+  background: linear-gradient(135deg, #004494, #003366) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4) !important;
+}
+
+.btn-load-more:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 10px rgba(0, 86, 179, 0.3) !important;
+}
+
+/* Loading More Indicator */
+.loading-more-container {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 2rem 0 !important;
+  grid-column: 1 / -1 !important; /* Span full width in grid */
+}
+
+.loading-more-spinner {
+  width: 40px !important;
+  height: 40px !important;
+  border: 3px solid #f3f3f3 !important;
+  border-top: 3px solid #0056b3 !important;
+  border-radius: 50% !important;
+  animation: loading-more-spin 1s linear infinite !important;
+  margin-bottom: 1rem !important;
+}
+
+.loading-more-container p {
+  color: #666 !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+}
+
+@keyframes loading-more-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Performance optimization: Use transform instead of changing layout properties */
+.product-card {
+  will-change: transform !important;
+  backface-visibility: hidden !important;
+}
+
+.product-card:hover {
+  transform: translateY(-5px) translateZ(0) !important;
+}
+
+/* Optimize image loading */
+.product-image {
+  object-fit: cover !important;
+  will-change: transform !important;
+  backface-visibility: hidden !important;
+}
+
+/* Mobile responsive load more */
+@media (max-width: 768px) {
+  .load-more-container,
+  .loading-more-container {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .btn-load-more {
+    padding: 0.8rem 1.5rem !important;
+    font-size: 1rem !important;
+    min-width: 180px !important;
+  }
+  
+  .loading-more-spinner {
+    width: 35px !important;
+    height: 35px !important;
+  }
+}
+
+/* Color Variant Circles Styling */
+.color-variants-preview {
+  margin-top: 0.5rem !important;
+}
+
+.color-dots {
+  display: flex !important;
+  gap: 6px !important;
+  margin-bottom: 0.3rem !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+.color-dot {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  border: 2px solid #ddd !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+.color-dot:hover {
+  transform: scale(1.1) !important;
+  border-color: #0056b3 !important;
+  box-shadow: 0 2px 8px rgba(0, 86, 179, 0.3) !important;
+}
+
+.color-dot.selected {
+  border-color: #0056b3 !important;
+  border-width: 3px !important;
+  transform: scale(1.15) !important;
+  box-shadow: 0 2px 8px rgba(0, 86, 179, 0.4) !important;
+}
+
+.color-dot.default-variant {
+  background-color: #f0f0f0 !important;
+  border: 2px solid #ccc !important;
+  font-size: 8px !important;
+  font-weight: bold !important;
+  color: #666 !important;
+}
+
+.color-dot.default-variant.selected {
+  background-color: #4CAF50 !important;
+  color: white !important;
+  border-color: #4CAF50 !important;
+}
+
+.dual-color-indicator {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  border: 1px solid white !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+.color-more {
+  font-size: 10px !important;
+  color: #666 !important;
+  font-weight: 500 !important;
+  padding: 0 4px !important;
+  background: #f5f5f5 !important;
+  border-radius: 10px !important;
+  border: 1px solid #ddd !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.color-text {
+  font-size: 11px !important;
+  color: #666 !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Responsive adjustments for color variants */
+@media (max-width: 768px) {
+  .color-dot {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  .dual-color-indicator {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  
+  .color-more {
+    min-width: 18px !important;
+    height: 18px !important;
+    font-size: 9px !important;
+  }
+  
+  .color-text {
+    font-size: 10px !important;
+  }
+}
+
+/* ==== Responsive layout fix for seat-cover details (no horizontal scroll) ==== */
+/* Make the two columns wrap and take full width on smaller screens */
+.flex.d-md-flex.justify-between.mt-4 {
+  flex-wrap: wrap !important; /* allow columns to stack */
+  gap: 2rem !important;       /* consistent spacing when wrapped */
+}
+
+/* Allow the image container and bill details to shrink or grow responsively */
+.image-container,
+.flex.flex-col.justify-center.mt-4 {
+  flex: 1 1 26rem !important;   /* 420px -> 26rem */
+  max-width: 35rem !important;
+}
+
+/* On large screens keep side-by-side layout with reasonable max widths */
+@media (min-width: 1024px) {
+  .image-container,
+  .flex.flex-col.justify-center.mt-4 {
+    flex: 1 1 45% !important;   /* roughly half width each */
+    max-width: 560px !important;
+  }
+}
+

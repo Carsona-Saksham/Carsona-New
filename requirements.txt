@@ -1,44 +1,15 @@
-# Final, comprehensive requirements for Render.com on Python 3.11
-# This file should resolve all ModuleNotFoundErrors.
-
-# Core Flask and extensions
-flask==2.3.3
-Flask-SQLAlchemy==3.0.5
-flask-login==0.6.2
-Flask-Migrate==4.0.5
-flask-caching==2.0.2
+flask
+Flask-SQLAlchemy
+flask-login
+flask-jwt-extended
+flask-caching
+celery
+redis
+flask-caching
+razorpay
+gunicorn
+psycopg2-binary
+Flask-Migrate
+Authlib
+pytz
 Flask-Compress==1.13
-
-# JWT - Re-enabling with a compatible version
-flask-jwt-extended==4.5.2
-PyJWT==2.8.0
-
-# Database and Server
-gunicorn==21.2.0
-psycopg2-binary==2.9.7
-
-# Asynchronous tasks
-celery==5.3.1
-redis==4.6.0
-
-# Authentication and Security
-authlib==1.2.1
-cryptography==41.0.4
-cffi==1.15.1
-
-# Utilities
-python-dotenv==1.0.0
-pytz==2023.3
-Werkzeug==2.3.7
-Jinja2==3.1.2
-
-# Payment Processing
-razorpay==1.4.2
-requests==2.31.0
-urllib3==2.0.7
-idna==3.4
-certifi==2023.7.22
-charset-normalizer==3.3.0
-
-# Cloud Storage for Permanent File Uploads
-cloudinary==1.38.0

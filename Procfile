@@ -1,1 +1,1 @@
-web: cd Project1/code && gunicorn --bind 0.0.0.0:$PORT --timeout 120 --max-requests-jitter 50 --preload main:app 
+web: gunicorn main:app 
